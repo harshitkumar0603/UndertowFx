@@ -1,0 +1,26 @@
+<div>
+  <table  class="table table-hover">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Song</th>
+      <th>Artist</th>
+      <th>Duration</th>
+      <th class="hidembl"><i class="fa fa-heart heart"></i></th>
+      <th class="hidembl320">Genre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let song of songs; let i = index;" (click)="playTrack('https://undertowfx.s3-eu-west-1.amazonaws.com/'+song.Key, i)">
+      <td><img class="img-fluid rounded float-left img-thumbnail" width="100" height="100" src='https://undertowfx.s3-eu-west-1.amazonaws.com/images/{{song.Key.split("/")[1].split(".")[0]}}'></td>
+      <td style="width: 30%"> <a (click) = "playTrack('https://undertowfx.s3-eu-west-1.amazonaws.com/'+song.Key, i); stopTrack()">{{song.Key.split('/')[1]}}</a>
+      </td>
+      <td> <a>{{this.trackDetails.get(song.Key.split('/')[1].split('.')[0]).Artist}}</a> </td>
+      <td> {{this.trackDetails.get(song.Key.split('/')[1].split('.')[0]).Track_Duration}} </td>
+      <td class="hidembl"> {{this.trackDetails.get(song.Key.split('/')[1].split('.')[0]).Likes}} </td>
+      <td class="hidembl320">{{this.trackDetails.get(song.Key.split('/')[1].split('.')[0]).Genre}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
